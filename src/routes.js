@@ -15,7 +15,7 @@ setInterval(async()=>{
     generate_get_token.refresh_token()
     console.log('token refresh')
     const fs = require('node:fs/promises')
-    const access_token = JSON.parse(await (await fs.readFile(path.resolve(__dirname,'..','token.json'))).toString())
+    const access_token = JSON.parse(await (await fs.readFile(path.resolve(__dirname,'token.json'))).toString())
     console.log(access_token.token)
 },1000*60)
 
