@@ -1,6 +1,7 @@
 const express = require('express')
 const Route = express.Router();
 const request = require('request');
+const path = require('path');
 
 
 //### import controllers
@@ -14,7 +15,7 @@ setInterval(async()=>{
     generate_get_token.refresh_token()
     console.log('token refresh')
     const fs = require('node:fs/promises')
-    const access_token = JSON.parse(await (await fs.readFile('src/token.json')).toString())
+    const access_token = JSON.parse(await (await fs.readFile(path.resolve(__dirname,'..','token.json'))).toString())
     console.log(access_token.token)
 },1000*60)
 
