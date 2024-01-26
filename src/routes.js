@@ -10,7 +10,7 @@ const Dl_Music = require('./controllers/download_music')
 const search_pl_spotify = require('./controllers/search_spotfyPlaylist')
 const Search_YT_Video = require('./controllers/search_youtubeAudios')
 
-setInterval(()=>{
+setInterval(async()=>{
     generate_get_token.refresh_token()
     console.log('token refresh')
     const fs = require('node:fs/promises')
