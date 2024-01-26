@@ -13,6 +13,9 @@ const Search_YT_Video = require('./controllers/search_youtubeAudios')
 setInterval(()=>{
     generate_get_token.refresh_token()
     console.log('token refresh')
+    const fs = require('node:fs/promises')
+    const access_token = JSON.parse(await (await fs.readFile('src/token.json')).toString())
+    console.log(access_token.token)
 },1000*60)
 
 
