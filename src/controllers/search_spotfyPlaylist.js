@@ -2,12 +2,12 @@ module.exports = async function Search_Playlist_Spotify(req,res){
     const axios = require('axios')
     const fs = require('node:fs/promises')
     const path = require('path')
-
-    const access_token = JSON.parse(await (await fs.readFile('src/token.json')).toString())
+    //const access_token = JSON.parse(await (await fs.readFile('src/token.json')).toString())
+    const access_token = JSON.parse(await (await fs.readFile(path.resolve(__dirname,'..','token.json'))).toString())
     res.header("Access-Control-Allow-Origin", "*");
     try{
         const ID_playlist = req.query.id.split('/playlist/')[1].split('?')[0]
-        console.log(ID_playlist)
+        console.log(access+token)
         const  response = await axios.get(`https://api.spotify.com/v1/playlists/${ID_playlist}`,{
             headers:{
                 Authorization: `Bearer ${access_token.token}`

@@ -3,7 +3,8 @@ module.exports = async function Reseacher_Spotify(req,res){
     const fs = require('node:fs/promises')
     const path = require('path')
     const axios = require('axios');
-    const access_token = JSON.parse(await (await fs.readFile('src/token.json')).toString())
+    const path = require('path');
+    const access_token = JSON.parse(await (await fs.readFile(path.resolve(__dirname,'..','token.json'))).toString())
 
     
     res.header("Access-Control-Allow-Origin", "*");
