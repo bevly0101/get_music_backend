@@ -12,12 +12,9 @@ module.exports= async function Dl_Music(req,res){
             })
         }
         if(req.query.type==='id'){
-            api.search(`${req.query.title}`,'video',10).then(result => {
-                console.log(result.content[0].videoId,req.query.title)
-                res.header("Content-Disposition", `attachment; filename="${result.content[0].name} - ${result.content[0].author}.mp3`);
-                ytdl(`http://www.youtube.com/watch?v=${result.content[0].videoId}`,{format:'webm', quality:'highestaudio'}).on('data', data=>{}).pipe(res)
-                res.closed
-            }) 
+            res.header("Content-Disposition", `attachment; filename="${req.query.title}.mp3`);
+            ytdl(`http://www.youtube.com/watch?v=${req.query.id}`,{format:'webm', quality:'highestaudio'}).on('data', data=>{}).pipe(res)
+            res.closed
         }
     })
 }

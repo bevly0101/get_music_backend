@@ -1,5 +1,6 @@
 const express = require('express')
 const Route = express.Router();
+const path = require('path')
 const request = require('request');
 
 
@@ -10,9 +11,12 @@ const Dl_Music = require('./controllers/download_music')
 const search_pl_spotify = require('./controllers/search_spotfyPlaylist')
 const Search_YT_Video = require('./controllers/search_youtubeAudios')
 
-setInterval(()=>{
+setInterval(async()=>{
     generate_get_token.refresh_token()
     console.log('token refresh')
+    const fs = require('node:fs/promises')
+    const access_token = JSON.parse(await (await fs.readFile(path.resolve(__dirname,'token.json'))).toString())
+    console.log(access_token.token)
 },1000*60)
 
 
@@ -43,13 +47,11 @@ Route.get('/search_Pl',search_pl_spotify)
 Route.get('/searchYT',Search_YT_Video)
 
 Route.get('/teste', async(req,res)=>{
-    const YoutubeMusicApi = require('youtube-music-api')
-    const api = new YoutubeMusicApi()
-    api.initalize().then(info =>{
-    api.getSearchSuggestions(`${req.query.t}`).then(result =>{
-        res.send(result)
-        })
-    })
+    const { videoInfo } = require('yt-getvideos');
+    videoInfo('tggg0rpFjeg').then(result => {
+        res.send(result);
+      });
+    
 })
 
 
