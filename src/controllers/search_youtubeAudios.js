@@ -24,8 +24,13 @@ module.exports = function Search_YT_Video(req,res){
             const { videoInfo } = require('yt-getvideos');
             const video_id = req.query.title
             videoInfo(req.query.title).then(result => {
-                const {title:name,thumbnails:[{url:thumbnail}],channel:{name:author}} = result;
-                res.send([{name, thumbnail, videoId:video_id,author}])
+                if(result){
+                    console.log('tem coisa ai')
+                    const {title:name,thumbnails:[{url:thumbnail}],channel:{name:author}} = result;
+                    res.send([{name, thumbnail, videoId:video_id,author}])
+                }else{
+                    res.send({erro:'o link está incorreto'})
+                }
             });
     
         }
