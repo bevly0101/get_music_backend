@@ -50,8 +50,9 @@ module.exports.generate_token = function Generate_Token(req,res){
 }
 module.exports.refresh_token = async function Refresh_Token(req,res){
     const fs = require('node:fs/promises')
-    const tokens = JSON.parse(await (await fs.readFile('src/token.json')).toString())
+    const tokens = {"token":"","refresh_token":"AQBKZIzF0-X-mIHLL7JIWZnQuodJUCj_VFurrg4_UMBH5kPxEM_HB5tOVG_GWS1hlN5h15ykmpfLwrGvqusWRu9BBgyp_P-ZyxGZO0yIRfz2DJlTxjYwYGbLBgal0leBlO8"}//JSON.parse(await (await fs.readFile('src/token.json')).toString())
     const request = require('request');
+    var TOKEN_RETURN = ''
     
 
     const client_id = '72ecfde4c4b94ae29fb9a950cd0697ae';
@@ -76,11 +77,13 @@ module.exports.refresh_token = async function Refresh_Token(req,res){
         var access_token = body.access_token
 
         tokens.token = access_token
-        await fs.writeFile('src/token.json',JSON.stringify(tokens),null,2,err=>{
-            if(err){
-                console.log(err)
-           }
-        })
+        TOKEN_RETURN = tokens
+        //await fs.writeFile('src/token.json',JSON.stringify(tokens),null,2,err=>{
+        //    if(err){
+        //       console.log(err)
+        //   }
+        //})
     }
     });
+    return TOKEN_RETURN
 }
