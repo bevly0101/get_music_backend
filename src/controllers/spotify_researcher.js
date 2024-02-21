@@ -4,7 +4,7 @@ module.exports = async function Reseacher_Spotify(req,res){
     const axios = require('axios');
     const path = require('path');
     const access_token = await Refresh_Token.then(t=>t)  //JSON.parse(await (await fs.readFile(path.resolve(__dirname,'..','token.json'))).toString())
-
+    console.log('success token!!!!!!!')
     
     res.header("Access-Control-Allow-Origin", "*");
     const {t} = req.query
