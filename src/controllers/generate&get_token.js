@@ -48,7 +48,7 @@ module.exports.generate_token = function Generate_Token(req,res){
         state:state
     }))
 }
-module.exports.refresh_token = async function Refresh_Token(req,res){
+module.exports.refresh_token = new Promise((resolve, reject)=>{
     const fs = require('node:fs/promises')
     const tokens = {"token":"","refresh_token":"AQBKZIzF0-X-mIHLL7JIWZnQuodJUCj_VFurrg4_UMBH5kPxEM_HB5tOVG_GWS1hlN5h15ykmpfLwrGvqusWRu9BBgyp_P-ZyxGZO0yIRfz2DJlTxjYwYGbLBgal0leBlO8"}//JSON.parse(await (await fs.readFile('src/token.json')).toString())
     const request = require('request');
@@ -83,7 +83,8 @@ module.exports.refresh_token = async function Refresh_Token(req,res){
         //       console.log(err)
         //   }
         //})
+        console.log('------------', TOKEN_RETURN)
+        resolve(TOKEN_RETURN)
     }
     });
-    return TOKEN_RETURN
-}
+});

@@ -1,9 +1,9 @@
 module.exports = async function Reseacher_Spotify(req,res){
-    const Refresh_Token = require('./generate&get_token').refresh_token();
+    const Refresh_Token = require('./generate&get_token').refresh_token;
     const fs = require('node:fs/promises')
     const axios = require('axios');
     const path = require('path');
-    const access_token = Refresh_Token()  //JSON.parse(await (await fs.readFile(path.resolve(__dirname,'..','token.json'))).toString())
+    const access_token = await Refresh_Token.then(t=>t)  //JSON.parse(await (await fs.readFile(path.resolve(__dirname,'..','token.json'))).toString())
 
     
     res.header("Access-Control-Allow-Origin", "*");
