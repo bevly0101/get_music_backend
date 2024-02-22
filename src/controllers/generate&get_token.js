@@ -76,14 +76,9 @@ module.exports.refresh_token = new Promise((resolve, reject)=>{
         var access_token = body.access_token
 
         tokens.token = access_token
-        TOKEN_RETURN = tokens
-        //await fs.writeFile('src/token.json',JSON.stringify(tokens),null,2,err=>{
-        //    if(err){
-        //       console.log(err)
-        //   }
-        //})
-        console.log('------------', TOKEN_RETURN)
-        resolve(TOKEN_RETURN)
+        TOKEN_RETURN = tokens;
+        console.log('------------', TOKEN_RETURN);
+        resolve(TOKEN_RETURN);
     }
     });
 });
