@@ -6,7 +6,8 @@ module.exports= async function Dl_Music(req,res){
         if(req.query.type==='name'){
             api.search(`${req.query.title} official music & lyric`,'video').then(result => {
                 const videoID = (result.content.filter(v=>v.type==='video'))[0].videoId
-                res.header("Content-Disposition", `attachment; filename="${req.query.title}.mp3`);
+                //res.header("Content-Disposition", `attachment;type="audio/mp3" filename="${req.query.title}.mp3`);
+                res.attachment(`${req.query.title}.mp3`);
                 ytdl(`http://www.youtube.com/watch?v=${videoID}`,{format:'webm', quality:'highestaudio'}).on('data', data=>{}).pipe(res)
                 res.closed
             })
