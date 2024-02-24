@@ -8,8 +8,8 @@ module.exports= async function Dl_Music(req,res){
                 const videoID = (result.content.filter(v=>v.type==='video'))[0].videoId
                 res.attachment(`${req.query.title}.mp3`);
                 const stream = await ytdl(`http://www.youtube.com/watch?v=${videoID}`,{format:'webm', quality:'highestaudio',filter:'audioonly'})
-                //const funcao = stream.listeners('erro')[2];
-                //stream.removeListener('erro',funcao);
+                const funcao = stream.listeners('erro')[2];
+                stream.removeListener('erro',funcao);
                 stream.on('data',data=>{}).pipe(res)
             })
         }
@@ -23,7 +23,7 @@ module.exports= async function Dl_Music(req,res){
 }
 
 
-/**
+/**C
  *  const stream await ytdl(url, {
         quality: highestaudio",
         filter: 'audioonly",
