@@ -18,6 +18,15 @@ module.exports= async function Dl_Music(req,res){
                 res.attachment(`${req.query.title}.mp3`);
 
                 const stream = await ytdl(`http://www.youtube.com/watch?v=${videoID}`,OPTIONS)
+
+                stream.on('error',err=>{
+                    try{
+                        console.log(err)
+                    }catch{
+                        stream.destroy();
+                        console.log(err)
+                    }
+                })
                 stream.on('data',data=>{}).pipe(res)
             })
         }
