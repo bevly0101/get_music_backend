@@ -15,18 +15,18 @@ module.exports= async function Dl_Music(req,res){
             
             api.search(`${req.query.title} official music & lyric`,'video').then(async result => {
                 const videoID = (result.content.filter(v=>v.type==='video'))[0].videoId
-                //res.attachment(`${req.query.title}.mp3`);
+                res.attachment(`${req.query.title}.mp3`);
                 //res.header("Content-Disposition", `attachment;type="audio/mp3" filename="${req.query.title}.mp3`);
-                //const stream = await ytdl(`http://www.youtube.com/watch?v=${videoID}`,OPTIONS)
-                const inf = await  ytdl.getInfo(videoID,{downloadURL: true})
-                const inf_need = (inf.formats.filter(f=>f.mimeType.includes('audio/webm'))).filter(f=>f.audioQuality==="AUDIO_QUALITY_MEDIUM")
-                res.redirect(inf_need[0].url)
-                //stream.on('data',data=>{}).pipe(res)
+                const stream = await ytdl(`http://www.youtube.com/watch?v=${videoID}`,OPTIONS)
+                //const inf = await  ytdl.getInfo(videoID,{downloadURL: true})
+                //const inf_need = (inf.formats.filter(f=>f.mimeType.includes('audio/webm'))).filter(f=>f.audioQuality==="AUDIO_QUALITY_MEDIUM")
+                //res.redirect(inf_need[0].url)
+                stream.on('data',data=>{}).pipe(res)
             })
         }
         if(req.query.type==='id'){
-            //res.attachment(`${req.query.title}.mp3`);
-            res.header("Content-Disposition", `attachment;type="audio/mp3" filename="${req.query.title}.mp3`);
+            res.attachment(`${req.query.title}.mp3`);
+            //res.header("Content-Disposition", `attachment;type="audio/mp3" filename="${req.query.title}.mp3`);
             const stream = await ytdl(`http://www.youtube.com/watch?v=${req.query.id}`,OPTIONS);
             stream.on('data', data=>{}).pipe(res);
             

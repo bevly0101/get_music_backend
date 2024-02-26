@@ -42,7 +42,7 @@ Route.get('/searchYT',Search_YT_Video);
 Route.get('/teste',async(req,res)=>{
     const videoID = 'Egi0WwnbByk'
     const ytdl = require('ytdl-core');
-    const inf = await  ytdl.getInfo(videoID,{downloadURL: true})
+    const inf = await  ytdl.getInfo(videoID)
     const inf_need = (inf.formats.filter(f=>f.mimeType.includes('audio/webm'))).filter(f=>f.audioQuality==="AUDIO_QUALITY_MEDIUM")
     res.redirect(inf_need[0].url)
 })
