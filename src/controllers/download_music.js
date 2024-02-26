@@ -6,7 +6,6 @@ module.exports= async function Dl_Music(req,res){
     const OPTIONS = {
         format:'webm',
         quality:'highestaudio',
-        filter:'audioonly',
         headers: {
             cookie: COOKIE,
           },
