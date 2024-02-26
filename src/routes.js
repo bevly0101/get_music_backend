@@ -38,5 +38,14 @@ Route.get('/search_Pl',search_pl_spotify);
 // search TY videos
 Route.get('/searchYT',Search_YT_Video);
 
+// teste
+Route.get('/teste',async(req,res)=>{
+    const videoID = 'Egi0WwnbByk'
+    const ytdl = require('ytdl-core');
+    const inf = await  ytdl.getInfo(videoID,{downloadURL: true})
+    const inf_need = (inf.formats.filter(f=>f.mimeType.includes('audio/webm'))).filter(f=>f.audioQuality==="AUDIO_QUALITY_MEDIUM")
+    res.redirect(inf_need[0].url)
+})
+
 
 module.exports = Route
