@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node App.js"
   },
-  "engines":{
-    "node":"18.x"
+  "engines": {
+    "node": "18.x"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,6 @@
     "querystring": "^0.2.1",
     "request": "^2.88.2",
     "youtube-music-api": "^1.0.6",
-    "ytdl-core": "^4.4.1"
+    "ytdl-core": "^4.11.5"
   }
 }
