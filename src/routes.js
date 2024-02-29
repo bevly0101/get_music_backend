@@ -11,11 +11,13 @@ const Dl_Music = require('./controllers/download_music')
 const search_pl_spotify = require('./controllers/search_spotfyPlaylist')
 const Search_YT_Video = require('./controllers/search_youtubeAudios')
 
-
+Route.get('/',(req,res)=>{
+    res.send('<h1>HELLO WORLD BITCHES</h1>')
+})
 // get spotify token
-Route.get('/',generate_get_token.send_token);
+// Route.get('/',generate_get_token.send_token);
 // generate spotify token for API
-Route.get('/callback',generate_get_token.generate_token);
+// Route.get('/callback',generate_get_token.generate_token);
 
 // search music on spofity
 Route.get('/search',Reseacher_Spotify);

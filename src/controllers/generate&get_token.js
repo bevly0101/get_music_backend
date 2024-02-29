@@ -1,7 +1,7 @@
 module.exports.send_token = function Send_Token(req,res){
     const request = require('request');
     const fs = require('node:fs/promises')
-    const redirect_uri ='http://localhost:4444'
+    const redirect_uri ='http://localhost:3002'
     const client_id = '72ecfde4c4b94ae29fb9a950cd0697ae';
     const client_secret = '56f9a161034b49a2a7bbc4ff2fcdb13b'
     
@@ -44,7 +44,7 @@ module.exports.generate_token = function Generate_Token(req,res){
         response_type:'code',
         client_id:client_id,
         scope: scope,
-        redirect_uri:'http://localhost:4444',
+        redirect_uri:'http://localhost:3002',
         state:state
     }))
 }
