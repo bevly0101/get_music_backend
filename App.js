@@ -1,6 +1,6 @@
 const express = require('express');
 const App = express();
-const PORT =  3002
+const PORT =  process.env.PORT || 3002
 const Routes = require('./src/routes')
 
 App.use(Routes);
