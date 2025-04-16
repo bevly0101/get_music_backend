@@ -8,4 +8,4 @@ O projeto **GetMusic** possui uma versão frontend que você pode conferir no re
 
 ## Tecnologias Usadas
 
-![Node.js](https://img.shields.io/badge/Node.js-%20-brightgreen?logo=node.js&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-%20-brightgreen?logo=node.js&logoColor=white) ![Express.js](https://img.shields.io/badge/Express.js-%20-blue?logo=express&logoColor=white)
